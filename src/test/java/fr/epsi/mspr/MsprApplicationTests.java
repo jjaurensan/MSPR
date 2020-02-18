@@ -1,4 +1,4 @@
-package com.sandbox.tictactoe;
+package fr.epsi.mspr;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
