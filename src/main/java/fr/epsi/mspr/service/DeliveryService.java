@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.epsi.mspr.entity.Delivery;
 import fr.epsi.mspr.repository.DeliveryRepository;
+import fr.epsi.mspr.service.exception.DeliveryNotExistException;
 @Service
 public class DeliveryService {
 
@@ -16,6 +17,14 @@ public class DeliveryService {
 	public Delivery create(Delivery delivery) {
 		
 		return deliveryRepository.save(delivery);
+	}
+
+	public void erase(Delivery delivery) throws DeliveryNotExistException {	
+		if(!deliveryRepository.existsById(delivery.getId())) {
+			throw new DeliveryNotExistException("This delivery is not found");
+		}
+		
+		
 	}
 
 }

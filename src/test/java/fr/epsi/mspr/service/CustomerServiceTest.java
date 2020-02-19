@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import fr.epsi.mspr.entity.Customer;
 import fr.epsi.mspr.repository.CustomerRepository;
+
 @SpringBootTest
 class CustomerServiceTest {
 
@@ -21,7 +22,6 @@ class CustomerServiceTest {
 
 	@Test
 	void createCustomer_createANewCustomerInRepository() {
-
 		Customer customerDB = sut.create(new Customer("John Doe", "2 rue de l'ecureuil"));
 		Optional<Customer> resultat = customerRepository.findById(customerDB.getId());
 		assertTrue(resultat.isPresent());
