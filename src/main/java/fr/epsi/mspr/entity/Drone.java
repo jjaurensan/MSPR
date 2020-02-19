@@ -1,19 +1,23 @@
 package fr.epsi.mspr.entity;
 
-import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
+@Entity
 public class Drone {
-
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nom;
 	private int posX;
 	private int posY;
 	private int posZ;
 	private Etat etat;
+	
+	public Drone() {		
+	}
 	
 	public Drone(String nom, int posX, int posY, int posZ, Etat etat) {
 		this.nom = nom;
@@ -58,6 +62,5 @@ public class Drone {
 	public void setEtat(Etat etat) {
 		this.etat = etat;
 	}
-	
-	
+
 }
