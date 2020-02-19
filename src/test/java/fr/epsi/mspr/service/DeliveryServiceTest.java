@@ -26,13 +26,13 @@ class DeliveryServiceTest {
 	@Test
 	void createDelivery_createANewDeliveryInRepository() throws Exception {
 		Date dateDeLivraison = new Date();
-		Drone drone = new Drone();
+		Drone drone = new Drone("test", 0, 0, 0, null);
 		Customer customer = new Customer();
 
 		Delivery delivery = new Delivery(drone, dateDeLivraison, customer);
-		sut.create(delivery);
+		Delivery deliveryDB = sut.create(delivery);
 
-		Optional<Delivery> resultat = deliveryRepository.findById(delivery.getId());
+		Optional<Delivery> resultat = deliveryRepository.findById(deliveryDB.getId());
 		assertTrue(resultat.isPresent());
 	}
 

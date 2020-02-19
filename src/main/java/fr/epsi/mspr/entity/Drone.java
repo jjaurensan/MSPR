@@ -16,6 +16,9 @@ public class Drone {
 	private int posZ;
 	private Etat etat;
 	
+	public Drone() {		
+	}
+	
 	public Drone(String nom, int posX, int posY, int posZ, Etat etat) {
 		this.nom = nom;
 		this.posX = posX;

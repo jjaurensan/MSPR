@@ -6,11 +6,13 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import fr.epsi.mspr.entity.Drone;
 import fr.epsi.mspr.entity.Etat;
 import fr.epsi.mspr.repository.DroneRepository;
 
+@SpringBootTest
 class DroneServiceTest {
 
 	@Autowired
@@ -24,10 +26,9 @@ class DroneServiceTest {
 		
 		Drone drone = new Drone("nom drone 1", 1, 2, 3, Etat.ARRET);
 
-		sut.create(drone);
-		Optional<Drone> resultat = droneRepo.findById(drone.getId());
-		assertTrue(!resultat.isPresent());
-		droneRepo.save(drone);
+		Drone droneDb =sut.create(drone);
+		Optional<Drone> resultat = droneRepo.findById(droneDb.getId());
+		assertTrue(resultat.isPresent());		
 	}
 
 	@Test
