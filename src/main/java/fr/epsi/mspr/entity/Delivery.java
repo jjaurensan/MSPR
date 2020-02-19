@@ -32,9 +32,6 @@ public class Delivery {
     @DateTimeFormat(pattern = FRENCH_DATE_FORMAT)
 	private Date dateDeLivraison;
 	
-	@OneToOne
-	private Customer customer;
-	
 	
 	/**
 	 * @param id
@@ -42,12 +39,12 @@ public class Delivery {
 	 * @param dateDeLivraison
 	 * @param customer
 	 */
-	public Delivery(Drone drone, Date dateDeLivraison, Customer customer) {
+	public Delivery(Drone drone, Date dateDeLivraison) {
 		super();
 		//this.id = id;
 		this.drone = drone;
 		this.dateDeLivraison = dateDeLivraison;
-		this.customer = customer;
+		
 	}
 	
 	public Delivery() {
@@ -78,13 +75,6 @@ public class Delivery {
 		this.dateDeLivraison = dateDeLivraison;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	
 
 }

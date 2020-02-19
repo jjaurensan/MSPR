@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import fr.epsi.mspr.entity.Customer;
 import fr.epsi.mspr.entity.Delivery;
 import fr.epsi.mspr.entity.Drone;
 import fr.epsi.mspr.repository.DeliveryRepository;
@@ -19,6 +18,8 @@ class DeliveryServiceTest {
 
 	@Autowired
 	private DeliveryRepository deliveryRepository;
+	@Autowired
+	private DroneService droneService;
 
 	@Autowired
 	private DeliveryService sut;
@@ -26,10 +27,10 @@ class DeliveryServiceTest {
 	@Test
 	void createDelivery_createANewDeliveryInRepository() throws Exception {
 		Date dateDeLivraison = new Date();
-		Drone drone = new Drone("test", 0, 0, 0, null);
-		Customer customer = new Customer();
+		Drone drone =droneService.create(new Drone("test", 0, 0, 0, null)) ;
+		 
 
-		Delivery delivery = new Delivery(drone, dateDeLivraison, customer);
+		Delivery delivery = new Delivery(drone, dateDeLivraison);
 		Delivery deliveryDB = sut.create(delivery);
 
 		Optional<Delivery> resultat = deliveryRepository.findById(deliveryDB.getId());

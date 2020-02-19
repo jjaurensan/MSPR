@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "customer")
 public class Customer {
 
 
@@ -16,4 +16,20 @@ public class Customer {
 	private String name;
 	
 	private String adresse;
+	
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param name
+	 * @param adresse
+	 */
+	public Customer(String name, String adresse) {
+		super();
+		this.name = name;
+		this.adresse = adresse;
+	}
+	
+	
 }
