@@ -21,17 +21,23 @@ class DroneServiceTest {
 	
 	@Test
 	void createDrone_sauveLeDroneDansLeRepository() throws Exception {
-		
-		Drone drone = new Drone("nom drone 1", 1, 2, 3, Etat.ARRET);
 
-		sut.create(drone);
+		// essayer de faire échouer le test 
+		Drone drone = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
+		
 		Optional<Drone> resultat = droneRepo.findById(drone.getId());
 		assertTrue(!resultat.isPresent());
-		droneRepo.save(drone);
+		//droneRepo.save(drone);
 	}
 
 	@Test
 	void verifieListeDroneNonVideApresAjout() throws Exception {
+		// tester d'abord si le test fail
+		Drone drone = new Drone("nom drone 1", 1, 2, 3, Etat.ARRET);
+
+
+//		droneRepo.save(drone);
+		assertTrue(droneRepo.findAll() != null);
 		
 	}
 }
