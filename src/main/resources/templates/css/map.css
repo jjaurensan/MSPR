@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+body {
+	font-family: Tahoma, Geneva, sans-serif;
+	color: black;
+}
+
+#body {
+	width: 100%;
+	vertical-align: middle;
+	float: none;
+	display: flex;
+	
+}
+/* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+#map {
+	height: 500px;
+	width: 50%;
+	margin-top: 30px;
+	margin-left: 50px;
+	display: inline-block;
+}
+
+#menu {
+	margin-left: 60px;
+	height: 80px;
+	padding-top: 60px;
+}
+
+#menu nav ul li {
+	border-radius: 4px;
+	display: inline-block;
+	margin-left: 2.5em;
+	padding-left: 0;
+}
+
+#menu nav ul li a {
+	text-decoration: none;
+}
+
+#menu nav ul {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+#les-drones {
+	height: 400px;
+	width: 30%;
+	margin-left: 50px;
+	margin-top: 30px;
+	background-color: silver;
+	display: inline-block;
+	display: none;
+	padding: 50px 50px 50px 50px;
+	
+}
+
+#localiser-drone {
+	height: 400px;
+	width: 30%;
+	margin-left: 50px;
+	margin-top: 30px;
+	background-color: silver;
+	display: inline-block;
+	display: none;
+	padding: 50px 50px 50px 50px;
+	
+}
