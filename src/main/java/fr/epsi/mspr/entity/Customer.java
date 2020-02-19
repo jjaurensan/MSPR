@@ -18,7 +18,6 @@ public class Customer {
 	private String adresse;
 	
 	public Customer() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -30,6 +29,31 @@ public class Customer {
 		this.name = name;
 		this.adresse = adresse;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
 	
 	
 }

@@ -20,19 +20,19 @@ class DroneServiceTest {
 
 	@Autowired
 	private DroneRepository droneRepo;
-	
+
 	@Test
 	void createDrone_sauveLeDroneDansLeRepository() throws Exception {
-		
+
 		Drone drone = new Drone("nom drone 1", 1, 2, 3, Etat.ARRET);
 
-		Drone droneDb =sut.create(drone);
+		Drone droneDb = sut.create(drone);
 		Optional<Drone> resultat = droneRepo.findById(droneDb.getId());
-		assertTrue(resultat.isPresent());		
+		assertTrue(resultat.isPresent());
 	}
 
 	@Test
 	void verifieListeDroneNonVideApresAjout() throws Exception {
-		
+
 	}
 }
