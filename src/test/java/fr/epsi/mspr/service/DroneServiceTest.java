@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import antlr.collections.List;
 import fr.epsi.mspr.entity.Drone;
 import fr.epsi.mspr.entity.Etat;
 import fr.epsi.mspr.repository.DroneRepository;
@@ -32,12 +33,30 @@ class DroneServiceTest {
 	}
 
 	@Test
-	void verifieListeDroneNonVideApresAjout() throws Exception {
-		// tester d'abord si le test fail
-		Drone drone = new Drone("nom drone 1", 1, 2, 3, Etat.ARRET);
+	void readAllDrone_InRepository() throws Exception {
+		int c=0;
 
+		Drone droneTest = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
 
-//		droneRepo.save(drone);
-		assertTrue(droneRepo.findAll() != null);
+		Iterable<Drone> d = sut.findAll();
+		for (Drone drone : d) c++;
+		assertTrue(c > 0);
 	}
+
+	@Test
+	void afficheLaBonneDescription() throws Exception {
+
+		Drone droneTest = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
+
+		assertEquals("nom drone 1", droneTest.toString());
+	}	
+	
+	@Test
+	void affichelaBonnePosY() throws Exception {
+
+		Drone droneTest = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
+
+		assertEquals(2.0, droneTest.getPosY());
+	}	
+	
 }

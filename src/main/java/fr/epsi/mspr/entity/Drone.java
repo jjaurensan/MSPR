@@ -11,15 +11,15 @@ public class Drone {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nom;
-	private int posX;
-	private int posY;
-	private int posZ;
+	private float posX;
+	private float posY;
+	private float posZ;
 	private Etat etat;
 	
 	public Drone() {		
 	}
 	
-	public Drone(String nom, int posX, int posY, int posZ, Etat etat) {
+	public Drone(String nom, float posX, float posY, float posZ, Etat etat) {
 		this.nom = nom;
 		this.posX = posX;
 		this.posY = posY;
@@ -38,22 +38,22 @@ public class Drone {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public int getPosX() {
+	public float getPosX() {
 		return posX;
 	}
-	public void setPosX(int posX) {
+	public void setPosX(float posX) {
 		this.posX = posX;
 	}
-	public int getPosY() {
+	public float getPosY() {
 		return posY;
 	}
-	public void setPosY(int posY) {
+	public void setPosY(float posY) {
 		this.posY = posY;
 	}
-	public int getPosZ() {
+	public float getPosZ() {
 		return posZ;
 	}
-	public void setPosZ(int posZ) {
+	public void setPosZ(float posZ) {
 		this.posZ = posZ;
 	}
 	public Etat getEtat() {
@@ -61,6 +61,13 @@ public class Drone {
 	}
 	public void setEtat(Etat etat) {
 		this.etat = etat;
+	}
+
+	@Override
+	public String toString() {
+//		return "Drone [id=" + id + ", nom=" + nom + ", posX=" + posX + ", posY=" + posY + ", posZ=" + posZ + ", etat="
+//				+ etat + "]";
+		return nom;
 	}
 
 }

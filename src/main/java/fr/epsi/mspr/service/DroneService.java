@@ -21,5 +21,10 @@ public class DroneService {
 		}
 		return droneRepository.save(drone);
 	}
+	
+	public Iterable<Drone> findAll() {
+		return droneRepository.findAll(); 
+	}
+	
 }
 
