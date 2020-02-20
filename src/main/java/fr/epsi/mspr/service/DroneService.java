@@ -1,5 +1,6 @@
 package fr.epsi.mspr.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -37,6 +38,11 @@ public class DroneService {
 			throw new DroneNonExistantException("Le drone n'existe pas");
 		
 		return droneRepository.findById(id);
+	}
+
+	public List<Drone> findByNom(String nom) throws DroneNonExistantException {
+		
+		return droneRepository.findByNom(nom);
 	}
 
 	public Drone update(Drone droneToUpdate) throws DroneNonExistantException {

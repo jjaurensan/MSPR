@@ -58,4 +58,16 @@ class DroneServiceTest {
 
 		assertEquals(2.0, droneTest.getPosY());
 	}
+
+	@Test
+	void afficheLeBonEtatPostModifETUpdateDeBdd() throws Exception {
+		Drone droneToUpdate = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.CHARGE));
+
+		// change l'état d'un drone créé arbitrairement et l'enregistre
+		droneToUpdate.setEtat(Etat.LIVRAISON);
+		sut.update(droneToUpdate);
+		
+		// vérifie l'état du drone en le rechargeant
+		assertEquals(Etat.LIVRAISON, sut.findById(droneToUpdate.getId()).get().getEtat());
+	}
 }
