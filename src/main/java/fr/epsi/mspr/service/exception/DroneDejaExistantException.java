@@ -1,4 +1,4 @@
-package fr.epsi.mspr.service;
+package fr.epsi.mspr.service.exception;
 
 public class DroneDejaExistantException extends Exception {
 
