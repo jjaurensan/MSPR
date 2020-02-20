@@ -20,7 +20,7 @@ public class Delivery {
 	private static final String FRENCH_DATE_FORMAT = "dd/MM/yyyy";
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@OneToOne
