@@ -1,7 +1,6 @@
 package fr.epsi.mspr.service;
 
 import java.util.Date;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,6 @@ public class DeliveryService {
 
 	@Transactional
 	public Delivery create(Delivery delivery) {
-
 		return deliveryRepository.save(delivery);
 	}
 
@@ -46,6 +44,10 @@ public class DeliveryService {
 		delivery.setCustomer(customer);
 
 		return delivery;
+	}
+
+	public Iterable<Delivery> getAll() {
+		return deliveryRepository.findAll();
 	}
 
 }
