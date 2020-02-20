@@ -9,18 +9,13 @@ var lonDrone2 = -0.5685285098797044;
 var macarte = null;
 
 var myIconDrone = L.icon({
-	iconUrl:"drone.png",
+	iconUrl:"./images/drone.png",
 	iconSize: [20, 20],
 	iconAnchor: [25, 50],
 	popupAnchor: [-3, -76],
 });
 
-var myIconEPSI = L.icon({
-	iconUrl:"drone.png",
-	iconSize: [20, 20],
-	iconAnchor: [25, 50],
-	popupAnchor: [-3, -76],
-});
+var entrepriseMarker =L.marker([ lat, lon]);
 
 var drone1= L.marker([ latDrone1, lonDrone1],{ icon: myIconDrone });
 drone1.bindPopup('drone 1');
@@ -42,12 +37,7 @@ function initMap() {
 						minZoom : 1,
 						maxZoom : 20
 					}).addTo(macarte);
-	var circle = L.circle([ lat, lon ], {
-		color : 'red',
-		fillColor : '#f03',
-		fillOpacity : 0.5,
-		radius : 50
-	}).addTo(macarte);
+	entrepriseMarker.addTo(macarte);
 	// Nous ajoutons un marqueur
 	
 	drone1.addTo(macarte);
@@ -82,8 +72,8 @@ function localiserUneDrone() {
 		localiserDrone.style.display = 'block';
 }
 
-function afficherInfoDrone() {
-	infoDrone = document.getElementById('infoDrone');
+function afficherInfoDrone( idDiv) {
+	infoDrone = document.getElementById(idDiv);
 	if (infoDrone.style.display == 'block')
 		infoDrone.style.display = 'none';	
 	else
