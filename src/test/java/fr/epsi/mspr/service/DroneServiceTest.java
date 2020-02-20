@@ -36,7 +36,7 @@ class DroneServiceTest {
 	void readAllDrone_InRepository() throws Exception {
 		int c=0;
 
-		Drone droneTest = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
+		sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
 
 		Iterable<Drone> d = sut.findAll();
 		for (Drone drone : d) c++;
@@ -57,6 +57,5 @@ class DroneServiceTest {
 		Drone droneTest = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
 
 		assertEquals(2.0, droneTest.getPosY());
-	}	
-	
+	}
 }
