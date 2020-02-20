@@ -1,5 +1,7 @@
 package fr.epsi.mspr.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import fr.epsi.mspr.entity.Drone;
 import fr.epsi.mspr.repository.DroneRepository;
+import fr.epsi.mspr.service.exception.DeliveryNotExistException;
+import fr.epsi.mspr.service.exception.DroneDejaExistantException;
+import fr.epsi.mspr.service.exception.DroneNonExistantException;
 
 @Service
 public class DroneService {
@@ -26,5 +31,19 @@ public class DroneService {
 		return droneRepository.findAll(); 
 	}
 	
+	public Optional<Drone> findById(long id) throws DroneNonExistantException {
+		
+		if (!droneRepository.existsById(id))
+			throw new DroneNonExistantException("Le drone n'existe pas");
+		
+		return droneRepository.findById(id);
+	}
+
+	public Drone update(Drone droneToUpdate) throws DroneNonExistantException {
+		if (!droneRepository.existsById(droneToUpdate.getId())) {
+			throw new DroneNonExistantException("Le drone n'existe pas");
+		}
+		return droneRepository.save(droneToUpdate);
+	}	
 }
 
