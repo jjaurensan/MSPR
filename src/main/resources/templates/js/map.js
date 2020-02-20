@@ -5,9 +5,29 @@ var latDrone1 = 44.86382829664125;
 var lonDrone1 = -0.5539287092459722;
 var latDrone2 = 44.85829503973355;
 var lonDrone2 = -0.5685285098797044;
-var drone1= L.marker([ latDrone1, lonDrone1 ]).bindPopup('drone 1');
-var drone2= L.marker([ latDrone2, lonDrone2 ]).bindPopup('drone 2');
+
 var macarte = null;
+
+var myIconDrone = L.icon({
+	iconUrl:"drone.png",
+	iconSize: [20, 20],
+	iconAnchor: [25, 50],
+	popupAnchor: [-3, -76],
+});
+
+var myIconEPSI = L.icon({
+	iconUrl:"drone.png",
+	iconSize: [20, 20],
+	iconAnchor: [25, 50],
+	popupAnchor: [-3, -76],
+});
+
+var drone1= L.marker([ latDrone1, lonDrone1],{ icon: myIconDrone });
+drone1.bindPopup('drone 1');
+
+var drone2= L.marker([ latDrone2, lonDrone2 ],{ icon: myIconDrone });
+drone2.bindPopup('drone 2');
+
 // Fonction d'initialisation de la carte
 function initMap() {
 	// Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
@@ -60,4 +80,12 @@ function localiserUneDrone() {
 		localiserDrone.style.display = 'none';	
 	else
 		localiserDrone.style.display = 'block';
+}
+
+function afficherInfoDrone() {
+	infoDrone = document.getElementById('infoDrone');
+	if (infoDrone.style.display == 'block')
+		infoDrone.style.display = 'none';	
+	else
+		infoDrone.style.display = 'block';
 }
