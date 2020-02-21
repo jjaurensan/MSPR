@@ -34,13 +34,9 @@ class DroneServiceTest {
 
 	@Test
 	void readAllDrone_InRepository() throws Exception {
-		int compteur=0;
 
 		sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
-
-		Iterable<Drone> d = sut.findAll();
-		for (Drone drone : d) compteur++;
-		assertTrue(compteur > 0);
+		assertTrue(!sut.findAll().isEmpty());
 	}
 
 	@Test

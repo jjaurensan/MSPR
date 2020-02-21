@@ -43,7 +43,7 @@ public class DroneController {
 		Drone updatedDrone = droneService.findById(id).get();
 		updatedDrone.setPosX(posX);
 		updatedDrone.setPosY(posY);
-		
+
 		return updatedDrone;
 	}
 }

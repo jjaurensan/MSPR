@@ -27,16 +27,16 @@ public class DroneService {
 		}
 		return droneRepository.save(drone);
 	}
-	
-	public Iterable<Drone> findAll() {
+
+	public List<Drone> findAll() {
 		return droneRepository.findAll(); 
 	}
-	
+
 	public Optional<Drone> findById(long id) throws DroneNonExistantException {
 		
 		if (!droneRepository.existsById(id))
 			throw new DroneNonExistantException("Le drone n'existe pas");
-		
+
 		return droneRepository.findById(id);
 	}
 
