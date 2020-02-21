@@ -1,11 +1,44 @@
 @charset "UTF-8";
 
 body {
-	background-image:url(./images/background.png);
+	height:100%;
+	width:100%;
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	color: black;
+	background-image: ;
+	background-repeat: no-repeat;
+	background-size: cover; 
+	z-index: -3;
+	opacity: 1.2em ;
+
 }
 
+body:after {
+			-moz-pointer-events: none;
+			-webkit-pointer-events: none;
+			-ms-pointer-events: none;
+			pointer-events: none;
+			-moz-transition: opacity 1.5s ease-in-out, visibility 1.5s;
+			-webkit-transition: opacity 1.5s ease-in-out, visibility 1.5s;
+			-ms-transition: opacity 1.5s ease-in-out, visibility 1.5s;
+			transition: opacity 1.5s ease-in-out, visibility 1.5s;
+			content: '';
+			background-image:url(../images/drone.jpg);
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: fixed;
+			display: block;
+			top: 0;
+			opacity: 0.22;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			z-index: -1;
+			visibility: visible;
+			opacity: 1;
+		}
 #body {
 	width: 100%;
 	vertical-align: middle;
@@ -16,7 +49,7 @@ body {
 /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
 #map {
 	height: 500px;
-	width: 70%;
+	width: 60%;
 	margin-top: 30px;
 	margin-left: 50px;
 	display: inline-block;
@@ -24,9 +57,10 @@ body {
 
 #menu {
 	margin-left: 60px;
+	margin-right: 60px;
 	height: 80px;
 	padding-top: 40px;
-	background-color:#F08080;
+	background-color:#48D1CC;
 	border-top-left-radius: 30px 30px;
 	border-top-right-radius: 30px 30px;
 	border-bottom-right-radius: 30px 30px;
@@ -67,8 +101,9 @@ text-decoration: none;}
 	margin-top: 30px;
 	display: inline-block;
 	display: none;
+	margin-right: 60px;
 	padding: 50px 50px 50px 50px;
-	background-color:#F08080;
+	background-color:#48D1CC;
 	border-top-left-radius: 10px 10px;
 	border-top-right-radius: 10px 10px;
 	border-bottom-right-radius: 10px 10px;
@@ -84,8 +119,9 @@ text-decoration: none;}
 	background-color: silver;
 	display: inline-block;
 	display: none;
+	margin-right: 60px;
 	padding: 50px 50px 50px 50px;
-	background-color:#F08080;
+	background-color:#48D1CC;
 	border-top-left-radius: 10px 10px;
 	border-top-right-radius: 10px 10px;
 	border-bottom-right-radius: 10px 10px;
