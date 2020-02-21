@@ -22,9 +22,9 @@ public class DroneService {
 
 	@Transactional
 	public Drone create(Drone drone) throws DroneDejaExistantException {
-		if (droneRepository.existsById(drone.getId())) {
+		if (droneRepository.existsById(drone.getId()))
 			throw new DroneDejaExistantException("Le drone avec l'id " + drone.getId() + " existe déjà");
-		}
+
 		return droneRepository.save(drone);
 	}
 
@@ -46,9 +46,9 @@ public class DroneService {
 	}
 
 	public Drone update(Drone droneToUpdate) throws DroneNonExistantException {
-		if (!droneRepository.existsById(droneToUpdate.getId())) {
+		if (!droneRepository.existsById(droneToUpdate.getId()))
 			throw new DroneNonExistantException("Le drone n'existe pas");
-		}
+
 		return droneRepository.save(droneToUpdate);
 	}	
 }

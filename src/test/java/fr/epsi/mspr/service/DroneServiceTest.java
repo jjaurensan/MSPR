@@ -24,24 +24,21 @@ class DroneServiceTest {
 
 	@Test
 	void createDrone_sauveLeDroneDansLeRepository() throws Exception {
-
 		Drone drone = new Drone("nom drone 1", 1, 2, 3, Etat.ARRET);
-
 		Drone droneDb = sut.create(drone);
 		Optional<Drone> resultat = droneRepo.findById(droneDb.getId());
+
 		assertTrue(resultat.isPresent());
 	}
 
 	@Test
 	void readAllDrone_InRepository() throws Exception {
-
 		sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
-		assertTrue(!sut.findAll().isEmpty());
+		assertFalse(sut.findAll().isEmpty());
 	}
 
 	@Test
 	void afficheLaBonneDescription() throws Exception {
-
 		Drone droneTest = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
 
 		assertEquals("nom drone 1", droneTest.toString());
@@ -49,7 +46,6 @@ class DroneServiceTest {
 	
 	@Test
 	void affichelaBonnePosY() throws Exception {
-
 		Drone droneTest = sut.create(new Drone("nom drone 1", 1, 2, 3, Etat.ARRET));
 
 		assertEquals(2.0, droneTest.getPosY());
@@ -62,7 +58,7 @@ class DroneServiceTest {
 		// change l'état d'un drone créé arbitrairement et l'enregistre
 		droneToUpdate.setEtat(Etat.LIVRAISON);
 		sut.update(droneToUpdate);
-		
+
 		// vérifie l'état du drone en le rechargeant
 		assertEquals(Etat.LIVRAISON, sut.findById(droneToUpdate.getId()).get().getEtat());
 	}
