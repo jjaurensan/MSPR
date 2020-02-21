@@ -1,16 +1,9 @@
 var baseUrl = window.location.protocol + "//" + window.location.host;
 var droneURL = baseUrl + "/drones";
 
-
-
-
 // On initialise la latitude et la longitude de Paris (centre de la carte)
 var lat = 44.8645645;
 var lon = -0.5590135;
-// var latDrone1 = drones[0].posX;
-// var lonDrone1 = drones[0].posY;
-// var latDrone2 = drones[1].posX;
-// var lonDrone2 = drones[1].posY;
 
 var macarte = null;
 
@@ -22,12 +15,6 @@ var myIconDrone = L.icon({
 });
 
 var entrepriseMarker = L.marker([lat, lon]);
-
-// var drone1 = L.marker([latDrone1, lonDrone1], { icon: myIconDrone });
-// drone1.bindPopup('drone 1');
-
-// var drone2 = L.marker([latDrone2, lonDrone2], { icon: myIconDrone });
-// drone2.bindPopup('drone 2');
 
 // Fonction d'initialisation de la carte
 function initMap() {
@@ -45,24 +32,42 @@ function initMap() {
 			}).addTo(macarte);
 	entrepriseMarker.addTo(macarte);
 	// Nous ajoutons un marqueur
+	var divDrones = document.getElementById("les-drones");
 
 	ajaxGet(droneURL, function (reponse) {
+
+		var ulContent = document.createElement("ul");
 		// Transforme la réponse en un tableau drones
 		drones = JSON.parse(reponse);
+		divDrones.appendChild(ulContent);
+
 		drones.forEach(function (drone) {
-		//	console.log(drones[0].posX);
-		droneMarker= L.marker([drone.posX, drone.posY], { icon: myIconDrone });
-		droneMarker.bindPopup(drone.nom);	
-		droneMarker.addTo(macarte);
+
+			droneMarker = L.marker([drone.posX, drone.posY], { icon: myIconDrone });
+			droneMarker.bindPopup(drone.nom);
+			droneMarker.addTo(macarte);
+
+			var liDrones = document.createElement("li");
+			var divInfoDrone = document.createElement("div");
+			var lienInfoDrone = document.createElement("a");
+			lienInfoDrone.setAttribute("onclick", "afficherInfoDrone('" + drone.id + "')");			
+			lienInfoDrone.setAttribute("href","#");
+			lienInfoDrone.textContent = drone.nom;
+			divInfoDrone.setAttribute("id", drone.id);
+			divInfoDrone.setAttribute("class", "divInfo");
+			divInfoDrone.textContent = drone.etat;
+			ulContent.appendChild(liDrones);
+			liDrones.appendChild(lienInfoDrone);
+			liDrones.appendChild(divInfoDrone);
 		});
 	});
-	// drone1.addTo(macarte);
-	// drone2.addTo(macarte);
 }
+
 window.onload = function () {
 	// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
 	initMap();
 };
+
 function afficherLaDrone() {
 
 }
@@ -90,6 +95,7 @@ function localiserUneDrone() {
 
 function afficherInfoDrone(idDiv) {
 	infoDrone = document.getElementById(idDiv);
+
 	if (infoDrone.style.display == 'block')
 		infoDrone.style.display = 'none';
 	else
