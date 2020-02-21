@@ -55,7 +55,7 @@ function initMap() {
 			lienInfoDrone.textContent = drone.nom;
 			divInfoDrone.setAttribute("id", drone.id);
 			divInfoDrone.setAttribute("class", "divInfo");
-			divInfoDrone.textContent = drone.etat;
+			divInfoDrone.textContent = "ID : "+drone.id+" , "+"état : "+drone.etat;
 			ulContent.appendChild(liDrones);
 			liDrones.appendChild(lienInfoDrone);
 			liDrones.appendChild(divInfoDrone);
